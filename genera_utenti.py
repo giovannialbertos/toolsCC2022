@@ -20,24 +20,18 @@ def get_partecipanti(filename):
     return partecipanti
 
 def generate_SQL_dump(partecipanti):
-    with open('SQL_dump.txt', 'a') as f:
+    with open('output/SQL_dump.txt', 'a') as f:
         for partecipante in partecipanti:
             f.write("('"+partecipante.hash+"', '"+partecipante.nome+"', '"+partecipante.cognome+"', 0),")
-
+            #modifcare per generare un unica query
     f.close()         
 
-partecipanti=get_partecipanti("partecipanti.csv")
-generate_SQL_dump(partecipanti)
-
-for partecipante in partecipanti:
-    print(partecipante.nome+ " "+partecipante.cognome+" "+partecipante.email+" "+ partecipante.hash)
 
 
+# partecipanti=get_partecipanti("input/partecipanti.csv")
+# generate_SQL_dump(partecipanti)
 
+# for partecipante in partecipanti:
+#     print(partecipante.nome+ " "+partecipante.cognome+" "+partecipante.email+" "+ partecipante.hash)
 
-
-# file = open('idsCC2022.csv', 'w+', newline ='') 
-# with file:     
-#     write = csv.writer(file) 
-#     write.writerow(ids) 
 

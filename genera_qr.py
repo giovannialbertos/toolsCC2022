@@ -1,21 +1,29 @@
 import csv
 import qrcode
 
-file = open("idsCC2022.csv", "r")
-data = list(csv.reader(file, delimiter=","))
-file.close()
-ids = []
-for nums in data:
-  for val in nums:
-    ids.append(val)
-print(ids)
+def make_qr(partecipante):
+  data = "http://localhost/CC2022/public/ticket.php?id"
+  img=qrcode.make("http://localhost/CC2022/public/ticket.php?id"+partecipante.hash)
+  img.save('output/qrcode.png')
 
-#data = 'http://localhost/CC2022/public/ticket.php?id='+ids[0]
-#per sito vero :
-data = 'http://cc2022.esnpolimi.it/ticket.php?id=ciao'
 
-# Encoding data using make() function
-img = qrcode.make(data)
 
-# Saving as an image file
-img.save('MyQRCode2.png')
+
+# file = open("idsCC2022.csv", "r")
+# data = list(csv.reader(file, delimiter=","))
+# file.close()
+# ids = []
+# for nums in data:
+#   for val in nums:
+#     ids.append(val)
+# print(ids)
+
+# #data = 'http://localhost/CC2022/public/ticket.php?id='+ids[0]
+# #per sito vero :
+# data = 'http://cc2022.esnpolimi.it/ticket.php?id=ciao'
+
+# # Encoding data using make() function
+# img = qrcode.make(data)
+
+# # Saving as an image file
+# img.save('MyQRCode2.png')
