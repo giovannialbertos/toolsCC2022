@@ -2,8 +2,7 @@ import csv
 import qrcode
 
 def make_qr(partecipante):
-  data = "http://localhost/CC2022/public/ticket.php?id"
-  img=qrcode.make("http://localhost/CC2022/public/ticket.php?id"+partecipante.hash)
+  img=qrcode.make("http://cc2022.esnpolimi.it/ticket.php?id="+partecipante.hash)
   img.save('output/qrcode.png')
 
 

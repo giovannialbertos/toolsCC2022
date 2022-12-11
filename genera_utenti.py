@@ -21,8 +21,9 @@ def get_partecipanti(filename):
 
 def generate_SQL_dump(partecipanti):
     with open('output/SQL_dump.txt', 'a') as f:
+        f.write("INSERT INTO `utenti`(`Id`, `Nome`, `Cognome`, `Usato`) VALUES ")
         for partecipante in partecipanti:
-            f.write("('"+partecipante.hash+"', '"+partecipante.nome+"', '"+partecipante.cognome+"', 0),")
+            f.write("('"+partecipante.hash+"', '"+partecipante.nome+"', '"+partecipante.cognome+"', 0), ")
             #modifcare per generare un unica query
     f.close()         
 
