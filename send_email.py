@@ -30,7 +30,12 @@ def send(yag,partecipante):
 
 def mass_email(partecipanti):
     yag=yagmail.SMTP('cc2022@esnpolimi.it', '9zyvO6Rp^wpbDoJ!/,5W%UFR')
+    counter=0
     for partecipante in partecipanti:
-        send(yag,partecipante)
-        print(f"email sent to {partecipante.email} {partecipante.hash}")
+        counter=counter+1
+        if "@" in partecipante.email: 
+            send(yag,partecipante)
+            print(f"{counter}/{len(partecipanti)} email sent to {partecipante.email} {partecipante.hash}")
+        else:
+            print(f"mail invalida {partecipante.email}")
     print("Done!")

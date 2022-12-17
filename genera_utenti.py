@@ -11,7 +11,8 @@ class persona:
         self.cognome=cognome
         self.email=email
         self.hash=get_hashed_password(self.nome+self.cognome)[7:17]
-    
+        
+
 def get_hashed_password(plain_text_password):
     return bcrypt.hashpw(plain_text_password, bcrypt.gensalt(5))
 
@@ -25,6 +26,13 @@ def save_partecipanti_list(partecipanti,input_file):
 #    with open("output/dump_lista", 'wb') as fp:
         pickle.dump(partecipanti, fp)
         print('Done writing list into a binary file')
+
+def save_partecipanti_totali(partecipanti,nome_file):
+    with open("output/"+nome_file, 'wb') as fp:
+#    with open("output/dump_lista", 'wb') as fp:
+        pickle.dump(partecipanti, fp)
+        print('Done writing list into a binary file')
+
 
 def load_partecipanti_list(input_file):
     with open("output/"+input_file, 'rb') as fp:
@@ -54,6 +62,12 @@ def print_partecipanti(partecipanti):
     for partecipante in partecipanti:
         print(partecipante.hash+" "+partecipante.nome+" "+partecipante.cognome+" "+partecipante.email)
 
+def find_partecipante_cognome(partecipanti,cognome):
+    for partecipante in partecipanti:
+        if partecipante.cognome.lower()==cognome.lower():
+            return partecipante
+    print(f"{cognome} non trovato")
+    return()
+
 #partecipanti=get_partecipanti("partecipanti_prova.csv")
 #partecipanti=load_partecipanti_list("partecipanti_prova_lista")
-
